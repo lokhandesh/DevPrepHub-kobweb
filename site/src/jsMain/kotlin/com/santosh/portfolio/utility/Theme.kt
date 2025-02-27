@@ -8,9 +8,6 @@ import org.jetbrains.compose.web.css.CSSColorValue
 import org.jetbrains.compose.web.css.Color
 
 object ThemeColors {
-    val isDarkMode = compositionLocalOf { mutableStateOf(true) }
-    val textColor: ProvidableCompositionLocal<CSSColorValue> = compositionLocalOf {
-        Color.white // Default value
-    }
+    val isDarkMode = compositionLocalOf { mutableStateOf(false) }
 
 }

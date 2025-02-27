@@ -159,8 +159,5 @@ fun DropdownMenu(ctx: PageContext, title: String, items: List<Pair<String, Strin
             }
         }
     }
-
-
-
 }
 

@@ -15,6 +15,7 @@ import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.theme.shapes.Circle
 import com.varabyte.kobweb.silk.theme.shapes.clip
+import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Span
@@ -24,7 +25,8 @@ import org.jetbrains.compose.web.dom.Text
 @Composable
 fun HomePage() {
     val ctx = rememberPageContext()
-    val textColor = ThemeColors.textColor.current
+    val isDarkMode = ThemeColors.isDarkMode.current //
+    val textColor = if (isDarkMode.value) Color.white else Color.black
     MainLayout {
         Column(
             modifier = Modifier.alignItems(AlignItems.Center)
@@ -49,21 +51,18 @@ fun HomePage() {
             ) {
                 Text("Santosh - Mobile Lead")
             }
-            P {
-                Span(
-                    attrs = {
-                        style {
-                            property("color", textColor.toString()) // Use dynamic theme color
-                            property("font-size", "16px")
-                        }
-                    }
-                )
-                Text("I am a senior mobile tech lead with expertise in Android, iOS, and Kotlin Multiplatform. I am passionate about mobile development and interview preparation.")
-            }
-
 
             SectionHeader("🚀 Job Interview Prep Hub")
-            P {
+
+            Span(
+                attrs = {
+                    style {
+                        property("font-size", "16px")
+                        property("color", textColor.toString())  // Add color if necessary
+                    }
+                }
+            )
+             {
 
                 Text("Get ready for Android, iOS, and KMP interviews with expert-curated questions.")
             }
