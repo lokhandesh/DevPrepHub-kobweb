@@ -1,6 +1,8 @@
 package com.santosh.portfolio.utility
 
 import androidx.compose.runtime.Composable
+import com.varabyte.kobweb.compose.css.borderBottom
+import com.varabyte.kobweb.compose.css.borderColor
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.H2
 import org.jetbrains.compose.web.dom.Text
@@ -16,10 +18,10 @@ fun SectionHeader(text:String) {
                 fontWeight("bold")
                 marginBottom(16.px)
                 textAlign("center")
-                background("linear-gradient(90deg, #ff7e5f, #feb47b)")
                 color(textColor)
-                padding(8.px)
-                borderRadius(8.px)
+                padding(12.px, 24.px) // Add padding for spacing
+                border(0.5.px, LineStyle.Solid, Color("#D3D3D3")) // Rounded border
+                borderRadius(12.px)
             }
         }
     ) {
