@@ -2,10 +2,10 @@ package com.santosh.portfolio.pages
 
 import androidx.compose.runtime.Composable
 import com.santosh.portfolio.utility.MainLayout
-import com.santosh.portfolio.utility.NavigationButton
-import com.santosh.portfolio.utility.SectionHeader
 import com.santosh.portfolio.utility.ThemeColors
 import com.varabyte.kobweb.compose.css.AlignItems
+import com.varabyte.kobweb.compose.css.FontWeight
+import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
@@ -19,9 +19,13 @@ import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.theme.shapes.Circle
 import com.varabyte.kobweb.silk.theme.shapes.clip
 import org.jetbrains.compose.web.css.Color
+import org.jetbrains.compose.web.css.FlexWrap
+import org.jetbrains.compose.web.css.JustifyContent
+import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.selectors.CSSSelector.PseudoClass.hover
 import org.jetbrains.compose.web.dom.A
+import org.jetbrains.compose.web.dom.Br
 import org.jetbrains.compose.web.dom.Img
 import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Span
@@ -38,18 +42,23 @@ fun HomePage() {
             modifier = Modifier
                 .padding(20.px)
                 .maxWidth(600.px)
+                .width(90.percent)
                 .backgroundColor(if (isDarkMode.value) Color("#1E1E1E") else Color("#F5F5F5"))
-                .borderRadius(12.px)
-                .margin(top = 30.px)
+                .borderRadius(16.px)
+                .margin(top = 40.px, bottom = 40.px)
                 .styleModifier {
                     property("box-shadow", "0px 4px 10px rgba(0, 0, 0, 0.2)")
                     property("background", "linear-gradient(to right, #4facfe, #00f2fe)")
                     property("&:hover", "transform: scale(1.03)")
+                    property("transition", "transform 0.3s ease-in-out")
                 }
                 .padding(24.px)
         ) {
             Column(
                 modifier = Modifier.alignItems(AlignItems.Center)
+                    .maxWidth(600.px) // Makes content fit mobile screens
+                    .width(90.percent)
+                    .alignItems(AlignItems.Center)
             ) {
 
                 Image(
@@ -63,50 +72,92 @@ fun HomePage() {
                 Span(
                     attrs = {
                         style {
-                            property("font-size", "24px")
+                            property("font-size", "26px")
                             property("font-weight", "bold")
                             property("color", textColor.toString())  // Add color if necessary
                         }
                     }
                 ) {
-                    Text("👋 Hi, I'm Santosh – Mobile Lead")
+                    Text("Hey, I'm Santosh")
                 }
 
                 P(
                     attrs = {
                         style {
+                            property("font-size", "18px")
+                            property("font-weight", "bold")
                             property("color", textColor.toString())
-                            property("font-size", "16px")
                             property("text-align", "center")
                             property("line-height", "1.6")
                         }
                     }
                 ) {
-                    Text(
-                        "🚀 Passionate **Mobile Lead Developer** with expertise in **Android, iOS, and Kotlin Multiplatform**. " +
-                                "I have worked on **highly scalable, secure** mobile applications for global brands, driving best practices in **architecture and performance optimization**."
-                    )
+                    Span { Text("🔹 ") }
+                    Span(attrs = {
+                        style {
+                            property("font-weight", "bold")
+                            property("color", textColor.toString())
+                        }
+                    }) {
+                        Text("Mobile Lead Developer")
+                    }
+                    Text(" specializing in ")
+                    Span(attrs = {
+                        style {
+                            property("font-weight", "bold")
+                            property("color", textColor.toString())
+                        }
+                    }){
+                        Text("Android, iOS, and Kotlin Multiplatform.")
+                    }
+                    Br()
+                    Text("Passionate about building ")
+                    Span(attrs = {
+                        style {
+                            property("font-weight", "bold")
+                            property("color", textColor.toString())
+                        }
+                    }){
+                        Text("secure, high-performance apps")
+                    }
+                    Text(" for global brands.")
                 }
 
                 P(
                     attrs = {
                         style {
+                            property("font-size", "18px")
+                          //  property("font-weight", "bold")
                             property("color", textColor.toString())
-                            property("font-size", "16px")
                             property("text-align", "center")
-                            property("line-height", "1.5")
+                            property("line-height", "1.6")
+                            property("max-width", 550.px)
+                            property("margin-top", "10px")
                         }
                     }
                 ) {
-                    Text(
-                        "This **Interview Prep Hub** is created to help mobile developers **excel in job interviews** with expert-curated questions, resume tips, and career guidance!"
-                    )
+                    Span { Text("💡 ") }
+                    Text("Welcome to the ")
+                    Span() {
+                        Text("Interview Prep Hub")
+                    }
+                    Text(" — your go-to resource for mastering mobile developer job interviews.")
+                    Br()
+                    Text("Explore ")
+                    Span() {
+                        Text("essential interview topics, resume tips, and career guidance")
+                    }
+                    Text(" tailored to help you confidently navigate technical discussions and showcase your expertise.")
                 }
 
                 Row(
                     modifier = Modifier
                         .margin(top = 20.px)
                         .gap(15.px)
+                        .maxWidth(600.px)
+                        .width(90.percent)
+                        .flexWrap(FlexWrap.Wrap)
+                        .justifyContent(JustifyContent.Center)
                 ) {
                     SocialButton("LinkedIn", "/icons/linkedin.svg", "https://www.linkedin.com/in/santosh-lokhande-5718476a/")
                     SocialButton("GitHub", "/icons/github1.svg", "https://github.com/lokhandesh/")
@@ -116,6 +167,8 @@ fun HomePage() {
                 Button(
                     onClick = { /* Add LinkedIn or Contact link */ },
                     modifier = Modifier
+                        .maxWidth(300.px) // Keeps buttons from stretching too wide on desktop
+                        .width(90.percent)
                         .margin(top = 16.px)
                         .backgroundColor(if (isDarkMode.value) Color("#4facfe") else Color("#007BFF"))
                         .color(Color.white)

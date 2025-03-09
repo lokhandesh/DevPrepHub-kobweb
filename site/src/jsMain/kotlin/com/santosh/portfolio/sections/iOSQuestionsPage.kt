@@ -28,8 +28,9 @@ fun iOSQuestionsPage() {
     MainLayout {
         Column(
             modifier = Modifier.alignItems(com.varabyte.kobweb.compose.css.AlignItems.Center)
+                .margin(bottom = 20.px)
         ) {
-            SectionHeader("🍏 iOS Interview Questions")
+            SectionHeader("🍏 iOS Interview Topics")
             SpanText("Prepare for Swift, UIKit, SwiftUI, and Memory Management.")
 
 
@@ -62,8 +63,7 @@ fun iOSQuestionsPage() {
                     points = listOf(
                         "Automatic Reference Counting (ARC)",
                         "Strong, weak, and unowned references",
-                        "Retain cycles & memory leaks",
-                        "Profiling with Instruments"
+                        "Retain cycles & memory leaks"
                     ),
                     background = "linear-gradient(to right, #11998e, #38ef7d)"
                 )

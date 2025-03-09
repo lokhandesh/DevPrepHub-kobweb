@@ -29,8 +29,9 @@ fun KmpQuestionsPage() {
     MainLayout {
         Column(
             modifier = Modifier.alignItems(com.varabyte.kobweb.compose.css.AlignItems.Center)
+                .margin(bottom = 20.px)
         ) {
-            SectionHeader("🌀 Kotlin Multiplatform (KMP) Interview Questions")
+            SectionHeader("Kotlin Multiplatform (KMP) Interview Topics")
             SpanText("Prepare for cross-platform development with KMP.")
 
 

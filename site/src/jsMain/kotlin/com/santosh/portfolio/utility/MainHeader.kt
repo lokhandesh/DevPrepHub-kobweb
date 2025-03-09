@@ -9,6 +9,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.core.PageContext
 import com.varabyte.kobweb.core.rememberPageContext
+import kotlinx.browser.window
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Button
 import org.jetbrains.compose.web.dom.Span
@@ -18,12 +19,20 @@ import org.jetbrains.compose.web.dom.Text
 fun MainHeader(isDarkMode: Boolean, onThemeToggle: () -> Unit) {
 
     //var isDarkMode by remember { mutableStateOf(true) }
-
     val backgroundColor = if (isDarkMode) Color("#1E1E1E") else Color("#F0F0F0")
     val textColor = if (isDarkMode) Color.white else Color.black
     val buttonBgColor = if (isDarkMode) Color("#444444") else Color("#FFFFFF")
 
     val ctx = rememberPageContext()
+    var isMenuOpen by remember { mutableStateOf(false) } // Toggle for mobile menu
+    val isMobile = remember { mutableStateOf(window.innerWidth <= 768) }
+
+    LaunchedEffect(Unit) {
+        window.addEventListener("resize", {
+            isMobile.value = (window.innerWidth <= 768)
+            if (!isMobile.value) isMenuOpen = false
+        })
+    }
 
     Row(
         modifier = Modifier
@@ -51,36 +60,47 @@ fun MainHeader(isDarkMode: Boolean, onThemeToggle: () -> Unit) {
             Text("🚀 Dev Prep Hub")  // The actual text content
         }
 
-        // Navigation Links
-        Row(
-            modifier = Modifier.gap(20.px),
-        ) {
-            NavLink(ctx, "Home", "/",textColor)
-            NavLink(ctx, "About", "/about",textColor)
-            DropdownMenu(ctx, "Interview Questions", listOf(
-                "Android" to "/android-questions",
-                "iOS" to "/ios-questions",
-                "KMP" to "/kmp-questions"
-            ),textColor)
-            NavLink(ctx, "Resume Tips", "/resume-tips",textColor)
-            NavLink(ctx, "Contact", "/contact",textColor)
-        }
-        Button(
-            attrs = {
-                style {
-                    property("background-color", buttonBgColor.toString())
-                    property("color", textColor.toString())
-                    property("padding", "8px 16px")
-                    property("border", "none")
-                    property("border-radius", "5px")
-                    property("cursor", "pointer")
-                }
-                onClick { onThemeToggle() } // Toggle theme
+        // Desktop Navigation (Hidden on Mobile)
+        if (!isMobile.value) {
+            Row(
+                modifier = Modifier.gap(20.px)
+            ) {
+                NavLink(ctx, "Home", "/", textColor)
+                NavLink(ctx, "About", "/about", textColor)
+                DropdownMenu(
+                    ctx, "Interview Topics", listOf(
+                        "Android" to "/android-questions",
+                        "iOS" to "/ios-questions",
+                        "KMP" to "/kmp-questions"
+                    ), textColor
+                )
+                NavLink(ctx, "Resume Tips", "/resume-tips", textColor)
+                NavLink(ctx, "Contact", "/contact", textColor)
             }
-        ) {
-            Text(if (isDarkMode) "☀️ Light Mode" else "🌙 Dark Mode")
         }
+        // 🌙 Theme Toggle Button (ALWAYS VISIBLE)
+        if (!isMobile.value) {
+            Button(
+                attrs = {
+                    style {
+                        property("background-color", buttonBgColor.toString())
+                        property("color", textColor.toString())
+                        property("padding", "8px 16px")
+                        property("border", "none")
+                        property("border-radius", "5px")
+                        property("cursor", "pointer")
+                        property("margin-left", "20px") // Add spacing from nav
+                    }
+                    onClick { onThemeToggle() }
+                }
+            ) {
+                Text(if (isDarkMode) "☀️ Light Mode" else "🌙 Dark Mode")
+            }
+        }
+
+
     }
+
 }
 
 // Individual Navigation Link

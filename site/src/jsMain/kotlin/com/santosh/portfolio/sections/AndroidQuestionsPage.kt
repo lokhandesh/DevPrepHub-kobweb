@@ -35,8 +35,9 @@ fun AndroidQuestionsPage() {
     MainLayout {
         Column(
             modifier = Modifier.alignItems(com.varabyte.kobweb.compose.css.AlignItems.Center)
+                .margin(bottom = 20.px)
         ) {
-            SectionHeader("🤖 Android Interview Questions")
+            SectionHeader("🤖 Android Interview Topics")
             P {
                 Span(
                     attrs = {
@@ -68,14 +69,27 @@ fun AndroidQuestionsPage() {
                     title = "Performance Optimization",
                     icon = "/icons/performance.svg",
                     points = listOf("Memory management", "Profiling tools", "Reducing APK size", "Battery optimizations"),
-                    background = "linear-gradient(to right, #11998e, #38ef7d)"
+                    background = "linear-gradient(to right, #11998e, #38ef7d)" // Background gradient
+                ),
+                Topic(
+                    title = "App Architecture",
+                    icon = "/icons/architecture.svg",
+                    points = listOf("MVVM, MVP, MVI", "Clean Architecture principles", "ViewModels, LiveData, Flow"),
+                    background = "linear-gradient(to right, #00C9FF, #92FE9D)"
+                ),
+                Topic(
+                    title = "Networking & APIs",
+                    icon = "/icons/network.svg",
+                    points = listOf("Retrofit & OkHttp", "Coroutines for networking", "Authentication (OAuth, JWT)"),
+                    background = "linear-gradient(to right, #4ECDC4, #F7B7A3)"
                 )
+
             )
 
             Row(
                 modifier = Modifier
                     .gap(20.px)
-                    .margin(top = 30.px)
+                    .margin(top = 20.px)
                     .flexWrap(FlexWrap.Wrap) // Responsive wrap for smaller screens
                     .justifyContent(JustifyContent.Center)
             ) {

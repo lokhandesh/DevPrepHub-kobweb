@@ -33,18 +33,21 @@ fun ContactPage() {
         Column(
             modifier = Modifier
                 .alignItems(AlignItems.Center)
+                .margin(bottom = 20.px)
         ) {
             SectionHeader("📞 Contact Us")
             SpanText("Got questions? Fill out the form below and we'll get back to you!")
 
             Column(
                 modifier = Modifier
-                    .width(420.px)
+                    .fillMaxWidth()
+                    .maxWidth(420.px)
+                    .margin(leftRight = 16.px, top = 20.px)
                     .padding(24.px)
                     .backgroundColor(Color("#FFFFFF")) // White background for form
                     .borderRadius(12.px) // Softer rounded edges
                     .border(1.px, LineStyle.Solid, Color("#D3D3D3")) // Light grey border
-                    .margin { top(20.px) }
+                   // .margin { top(20.px) }
                     .styleModifier { property("box-shadow", "4px 4px 15px rgba(0, 0, 0, 0.1)") } // Subtle shadow for depth
             ) {
                 FormInput(label = "Your Name", placeholder = "Enter your name", inputType = InputType.Text)

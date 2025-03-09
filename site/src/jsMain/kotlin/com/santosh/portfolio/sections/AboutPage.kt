@@ -87,32 +87,47 @@ fun AboutPage() {
                     P(
                         attrs = {
                             style {
-                                property("color", textColor.toString())
                                 property("font-size", "18px")
                                 property("line-height", "1.6")
+                                property("font-weight", "bold")
+                                property("color", textColor.toString())
                             }
                         }
                     ) {
-                        Text("Senior Mobile Lead Developer specializing in **Android, iOS, and Kotlin Multiplatform (KMP)**. Passionate about building **scalable, high-performance apps** and mentoring developers.")
+                        Text("Senior Mobile Lead Developer with expertise in ")
+                        Span() {
+                            Text("Android, iOS, and Kotlin Multiplatform (KMP).")
+                        }
+                        Text(" I specialize in building ")
+                        Span() {
+                            Text("scalable, high-performance mobile applications")
+                        }
+                        Text(" while mentoring developers to follow best practices.")
                     }
                 }
             }
 
             // Section: Mission
-            AboutCard("🎯 Our Mission", "At **Dev Prep Hub**, we aim to help mobile developers **excel in job interviews** with expert-curated questions, resume tips, and career guidance.")
+            AboutCard(
+                "🎯 Our Mission",
+                "At Dev Prep Hub, we empower mobile developers to succeed in job interviews by providing expert insights, structured interview topics, and resume guidance."
+            )
 
             // Section: Experience
             AboutCard(
                 "👨‍💻 My Experience",
-                "With **10 years of experience**, I have worked on **enterprise-grade mobile applications** across the **finance, banking, and fintech sectors**. My expertise lies in **security, scalable architecture, and performance optimization**, ensuring seamless user experiences for high-traffic applications."
+                "With over a decade of experience, I have developed enterprise-grade mobile applications for banking, finance, and fintech sectors. My expertise includes security, scalable architecture, and performance optimization—ensuring seamless experiences for millions of users."
             )
             // Section: Why Dev Prep Hub
-            AboutCard("📌 Why Dev Prep Hub?", """
-                ✅ **Real-world** interview questions  
-                ✅ **Industry-experienced insights**  
-                ✅ Covers **Android, iOS, and KMP** deeply  
-                ✅ **Resume tips** to stand out  
-            """.trimIndent())
+            AboutCard(
+                "📌 Why Dev Prep Hub?",
+                """
+                ✅ Real-world interview topics  
+                ✅ Insights from industry experts  
+                ✅ Deep coverage of Android, iOS, and KMP  
+                ✅ Resume tips to make you stand out  
+            """.trimIndent()
+            )
 
             // Social Links
             Row(
