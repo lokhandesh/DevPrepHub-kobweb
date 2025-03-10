@@ -7,8 +7,11 @@ import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.alignItems
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
+import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
+import com.varabyte.kobweb.compose.ui.modifiers.flexDirection
+import com.varabyte.kobweb.compose.ui.modifiers.flexGrow
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.height
 import com.varabyte.kobweb.compose.ui.modifiers.justifyContent
@@ -23,6 +26,8 @@ import com.varabyte.kobweb.core.rememberPageContext
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.AlignItems
 import org.jetbrains.compose.web.css.Color
+import org.jetbrains.compose.web.css.DisplayStyle
+import org.jetbrains.compose.web.css.FlexDirection
 import org.jetbrains.compose.web.css.JustifyContent
 import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.px
@@ -57,8 +62,8 @@ fun MainLayout(content: @Composable () -> Unit) {
                 .alignItems(AlignItems.Center)
                 .styleModifier {
                     property("background", backgroundGradient)
-                   // property("overflow", "hidden") // Prevent scrolling of MainLayout
-                   // property("height", "100vh") // Ensure it takes full viewport height
+                    property("overflow", "hidden") // Prevent scrolling of MainLayout
+                    property("height", "100vh") // Ensure it takes full viewport height
                 }
         ) {
 
@@ -162,31 +167,46 @@ fun MainLayout(content: @Composable () -> Unit) {
                 // Navigation Links (Styled like a native mobile menu)
                 NavLinkMobile(ctx, "Home", "/", Color.white)
                 NavLinkMobile(ctx, "About", "/about", Color.white)
-                DropdownMenuMobile(ctx, "Interview Topics", listOf(
-                    "Android" to "/android-questions",
-                    "iOS" to "/ios-questions",
-                    "KMP" to "/kmp-questions"
-                ), Color.white)
+                DropdownMenuMobile(
+                    ctx, "Interview Topics", listOf(
+                        "Android" to "/android-questions",
+                        "iOS" to "/ios-questions",
+                        "KMP" to "/kmp-questions"
+                    ), Color.white
+                )
                 NavLinkMobile(ctx, "Resume Tips", "/resume-tips", Color.white)
                 NavLinkMobile(ctx, "Contact", "/contact", Color.white)
             }
 
 
-
-            MainHeader(
-                isDarkMode = isDarkMode.value,
-                onThemeToggle = { isDarkMode.value = !isDarkMode.value }
-            )
-            /*Box(
+            Box(
                 modifier = Modifier
                     .fillMaxSize()
                     .styleModifier {
-                        property("overflow", "auto") // Allow only this content to scroll
-                        property("max-height", "calc(100vh - 50px)") // Subtract header height
+                        property("background", backgroundGradient)
+                        property("min-height", "100vh")  // Ensure full viewport height
+                        property("display", "flex")
+                        property("flex-direction", "column")
                     }
-            ) {*/
-                content() // Render the page content passed as a parameter
-         //   }
+            ) {
+                MainHeader(
+                    isDarkMode = isDarkMode.value,
+                    onThemeToggle = { isDarkMode.value = !isDarkMode.value }
+                )
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .flexGrow(1)  // Allow this section to take available space
+                        .styleModifier {
+                            property("overflow-y", "auto") // Scroll only when needed
+                            property("display", "flex")
+                            property("justify-content", "center")
+                            property("align-items", "center")
+                        }
+                ) {
+                    content() // Render the page content passed as a parameter
+                }
+            }
         }
     }
 }

@@ -6,6 +6,8 @@ import com.santosh.portfolio.utility.MainLayout
 import com.santosh.portfolio.utility.SectionHeader
 import com.santosh.portfolio.utility.SpanText
 import com.santosh.portfolio.utility.TopicCardWithNewDesign
+import com.varabyte.kobweb.compose.css.Overflow
+import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -21,10 +23,17 @@ import org.jetbrains.compose.web.dom.Div
 @Composable
 fun ResumeTipsPage() {
     MainLayout {
-        Column(
-            modifier = Modifier.alignItems(AlignItems.Center)
-                .margin(bottom = 20.px)
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .overflow(Overflow.Auto)
+                .padding(bottom = 80.px)
         ) {
+            Column(
+                modifier = Modifier
+                    .alignItems(AlignItems.Center)
+                    .fillMaxWidth()
+            ) {
             SectionHeader("📄 Resume Tips for Mobile Developers")
 
             SpanText("Elevate your resume and land interviews faster with these simple tweaks!")
@@ -97,7 +106,7 @@ fun ResumeTipsPage() {
             Row(
                 modifier = Modifier
                     .gap(20.px)
-                    .margin(top = 30.px)
+                    .margin(top = 0.px, bottom = 60.px)
                     .flexWrap(FlexWrap.Wrap) // Responsive wrap for smaller screens
                     .justifyContent(JustifyContent.Center)
             ) {
@@ -107,5 +116,6 @@ fun ResumeTipsPage() {
             }
         }
     }
+        }
 }
 

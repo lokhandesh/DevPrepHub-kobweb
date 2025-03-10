@@ -19,6 +19,8 @@ import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.theme.shapes.Circle
 import com.varabyte.kobweb.silk.theme.shapes.clip
 import org.jetbrains.compose.web.css.Color
+import org.jetbrains.compose.web.css.DisplayStyle
+import org.jetbrains.compose.web.css.FlexDirection
 import org.jetbrains.compose.web.css.FlexWrap
 import org.jetbrains.compose.web.css.JustifyContent
 import org.jetbrains.compose.web.css.percent
@@ -40,144 +42,164 @@ fun HomePage() {
     MainLayout {
         Box(
             modifier = Modifier
-                .padding(20.px)
-                .maxWidth(600.px)
-                .width(90.percent)
-                .backgroundColor(if (isDarkMode.value) Color("#1E1E1E") else Color("#F5F5F5"))
-                .borderRadius(16.px)
-                .margin(top = 40.px, bottom = 40.px)
+                .fillMaxSize()
+                .display(DisplayStyle.Flex)
+                .flexDirection(FlexDirection.Column)
+                .justifyContent(JustifyContent.Center)
+                .alignItems(AlignItems.Center)
                 .styleModifier {
-                    property("box-shadow", "0px 4px 10px rgba(0, 0, 0, 0.2)")
-                    property("background", "linear-gradient(to right, #4facfe, #00f2fe)")
-                    property("&:hover", "transform: scale(1.03)")
-                    property("transition", "transform 0.3s ease-in-out")
+                    property("min-height", "100vh") // Ensures full height
+                    property("overflow-y", "auto") // Enables scrolling when needed
+                    property("padding-top", "80px") // Ensures space on top
+                    property("padding-bottom", "60px")
                 }
-                .padding(24.px)
         ) {
             Column(
-                modifier = Modifier.alignItems(AlignItems.Center)
-                    .maxWidth(600.px) // Makes content fit mobile screens
+                modifier = Modifier
+                    .maxWidth(600.px)
                     .width(90.percent)
-                    .alignItems(AlignItems.Center)
+                    .backgroundColor(if (isDarkMode.value) Color("#1E1E1E") else Color("#F5F5F5"))
+                    .borderRadius(16.px)
+                    .padding(24.px)
+                    .margin(top = 40.px, bottom = 40.px)
+                    .styleModifier {
+                        property("box-shadow", "0px 4px 10px rgba(0, 0, 0, 0.2)")
+                        property("background", "linear-gradient(to right, #4facfe, #00f2fe)")
+                        property("transition", "transform 0.3s ease-in-out")
+                    }
             ) {
-
-                Image(
-                    "/icons/santosh.jpeg", alt = "My image description",  // Correct path to your image
-                    modifier = Modifier
-                        .width(120.px)  // Set width
-                        .height(120.px)  // Set height
-                        .clip(Circle())  // Circular image
-                        .margin(bottom = 20.px, top = 20.px)  // Add margin below the image
-                )
-                Span(
-                    attrs = {
-                        style {
-                            property("font-size", "26px")
-                            property("font-weight", "bold")
-                            property("color", textColor.toString())  // Add color if necessary
-                        }
-                    }
-                ) {
-                    Text("Hey, I'm Santosh")
-                }
-
-                P(
-                    attrs = {
-                        style {
-                            property("font-size", "18px")
-                            property("font-weight", "bold")
-                            property("color", textColor.toString())
-                            property("text-align", "center")
-                            property("line-height", "1.6")
-                        }
-                    }
-                ) {
-                    Span { Text("🔹 ") }
-                    Span(attrs = {
-                        style {
-                            property("font-weight", "bold")
-                            property("color", textColor.toString())
-                        }
-                    }) {
-                        Text("Mobile Lead Developer")
-                    }
-                    Text(" specializing in ")
-                    Span(attrs = {
-                        style {
-                            property("font-weight", "bold")
-                            property("color", textColor.toString())
-                        }
-                    }){
-                        Text("Android, iOS, and Kotlin Multiplatform.")
-                    }
-                    Br()
-                    Text("Passionate about building ")
-                    Span(attrs = {
-                        style {
-                            property("font-weight", "bold")
-                            property("color", textColor.toString())
-                        }
-                    }){
-                        Text("secure, high-performance apps")
-                    }
-                    Text(" for global brands.")
-                }
-
-                P(
-                    attrs = {
-                        style {
-                            property("font-size", "18px")
-                          //  property("font-weight", "bold")
-                            property("color", textColor.toString())
-                            property("text-align", "center")
-                            property("line-height", "1.6")
-                            property("max-width", 550.px)
-                            property("margin-top", "10px")
-                        }
-                    }
-                ) {
-                    Span { Text("💡 ") }
-                    Text("Welcome to the ")
-                    Span() {
-                        Text("Interview Prep Hub")
-                    }
-                    Text(" — your go-to resource for mastering mobile developer job interviews.")
-                    Br()
-                    Text("Explore ")
-                    Span() {
-                        Text("essential interview topics, resume tips, and career guidance")
-                    }
-                    Text(" tailored to help you confidently navigate technical discussions and showcase your expertise.")
-                }
-
-                Row(
-                    modifier = Modifier
-                        .margin(top = 20.px)
-                        .gap(15.px)
-                        .maxWidth(600.px)
+                Column(
+                    modifier = Modifier.alignItems(AlignItems.Center)
+                        .maxWidth(600.px) // Makes content fit mobile screens
                         .width(90.percent)
-                        .flexWrap(FlexWrap.Wrap)
-                        .justifyContent(JustifyContent.Center)
+                        .alignItems(AlignItems.Center)
+                        .styleModifier {
+                            property("overflow", "auto") // Ensures scrolling inside if needed
+                        }
                 ) {
-                    SocialButton("LinkedIn", "/icons/linkedin.svg", "https://www.linkedin.com/in/santosh-lokhande-5718476a/")
-                    SocialButton("GitHub", "/icons/github1.svg", "https://github.com/lokhandesh/")
-                    SocialButton("Twitter", "/icons/twitter.svg", "https://twitter.com/yourprofile")
-                }
 
-                Button(
-                    onClick = { /* Add LinkedIn or Contact link */ },
-                    modifier = Modifier
-                        .maxWidth(300.px) // Keeps buttons from stretching too wide on desktop
-                        .width(90.percent)
-                        .margin(top = 16.px)
-                        .backgroundColor(if (isDarkMode.value) Color("#4facfe") else Color("#007BFF"))
-                        .color(Color.white)
-                        .borderRadius(8.px)
-                        .padding(10.px, 12.px)
-                ) {
-                    Text("📩 Connect with Me")
-                }
+                    Image(
+                        "/icons/santosh.jpeg", alt = "My image description",  // Correct path to your image
+                        modifier = Modifier
+                            .width(120.px)  // Set width
+                            .height(120.px)  // Set height
+                            .clip(Circle())  // Circular image
+                            .margin(bottom = 20.px, top = 20.px)  // Add margin below the image
+                    )
+                    Span(
+                        attrs = {
+                            style {
+                                property("font-size", "26px")
+                                property("font-weight", "bold")
+                                property("color", textColor.toString())  // Add color if necessary
+                            }
+                        }
+                    ) {
+                        Text("Hey, I'm Santosh")
+                    }
 
+                    P(
+                        attrs = {
+                            style {
+                                property("font-size", "18px")
+                                property("font-weight", "bold")
+                                property("color", textColor.toString())
+                                property("text-align", "center")
+                                property("line-height", "1.6")
+                            }
+                        }
+                    ) {
+                        Span { Text("🔹 ") }
+                        Span(attrs = {
+                            style {
+                                property("font-weight", "bold")
+                                property("color", textColor.toString())
+                            }
+                        }) {
+                            Text("Mobile Lead Developer")
+                        }
+                        Text(" specializing in ")
+                        Span(attrs = {
+                            style {
+                                property("font-weight", "bold")
+                                property("color", textColor.toString())
+                            }
+                        }) {
+                            Text("Android, iOS, and Kotlin Multiplatform.")
+                        }
+                        Br()
+                        Text("Passionate about building ")
+                        Span(attrs = {
+                            style {
+                                property("font-weight", "bold")
+                                property("color", textColor.toString())
+                            }
+                        }) {
+                            Text("secure, high-performance apps")
+                        }
+                        Text(" for global brands.")
+                    }
+
+                    P(
+                        attrs = {
+                            style {
+                                property("font-size", "18px")
+                                //  property("font-weight", "bold")
+                                property("color", textColor.toString())
+                                property("text-align", "center")
+                                property("line-height", "1.6")
+                                property("max-width", 550.px)
+                                property("margin-top", "10px")
+                            }
+                        }
+                    ) {
+                        Span { Text("💡 ") }
+                        Text("Welcome to the ")
+                        Span() {
+                            Text("Interview Prep Hub")
+                        }
+                        Text(" — your go-to resource for mastering mobile developer job interviews.")
+                        Br()
+                        Text("Explore ")
+                        Span() {
+                            Text("essential interview topics, resume tips, and career guidance")
+                        }
+                        Text(" tailored to help you confidently navigate technical discussions and showcase your expertise.")
+                    }
+
+                    Row(
+                        modifier = Modifier
+                            .margin(top = 20.px)
+                            .gap(15.px)
+                            .maxWidth(600.px)
+                            .width(90.percent)
+                            .flexWrap(FlexWrap.Wrap)
+                            .justifyContent(JustifyContent.Center)
+                    ) {
+                        SocialButton(
+                            "LinkedIn",
+                            "/icons/linkedin.svg",
+                            "https://www.linkedin.com/in/santosh-lokhande-5718476a/"
+                        )
+                        SocialButton("GitHub", "/icons/github1.svg", "https://github.com/lokhandesh/")
+                        SocialButton("Twitter", "/icons/twitter.svg", "https://twitter.com/yourprofile")
+                    }
+
+                    Button(
+                        onClick = { /* Add LinkedIn or Contact link */ },
+                        modifier = Modifier
+                            .maxWidth(300.px) // Keeps buttons from stretching too wide on desktop
+                            .width(90.percent)
+                            .margin(top = 16.px)
+                            .backgroundColor(if (isDarkMode.value) Color("#4facfe") else Color("#007BFF"))
+                            .color(Color.white)
+                            .borderRadius(8.px)
+                            .padding(10.px, 12.px)
+                    ) {
+                        Text("📩 Connect with Me")
+                    }
+
+                }
             }
         }
     }

@@ -15,10 +15,11 @@ fun SpanText(text: String) {
                 property("font-size", "18px")
                 property("font-weight", "500")
                 property("text-align", "center")
-                property("margin-left", "16px") // Left margin
-                property("margin-right", "16px") // Right margin
+                property("margin-bottom", "16px")
+                property("margin-left", "16px")
+                property("margin-right", "16px")
                 property("color", textColor.toString())
-                property("line-height", "1.6") // Add color if necessary
+                property("line-height", "1.6")
             }
         }
     ) {

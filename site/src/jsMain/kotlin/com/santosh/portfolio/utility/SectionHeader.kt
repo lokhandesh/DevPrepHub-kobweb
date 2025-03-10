@@ -15,18 +15,16 @@ fun SectionHeader(text:String) {
     H1(
         attrs = {
             style {
-                fontSize(20.px)
+                fontSize(16.px)
                 fontWeight("bold")
-                marginBottom(16.px)
                 textAlign("center")
                 color(textColor)
-                padding(12.px, 24.px) // Add padding for spacing
-                border(0.5.px, LineStyle.Solid, Color("#D3D3D3")) // Rounded border
+                padding(16.px, 16.px)
+                border(0.5.px, LineStyle.Solid, Color("#D3D3D3"))
                 borderRadius(12.px)
-                // Prevent text from wrapping and overflow handling
-                property("white-space", "nowrap")
-                property("overflow", "hidden")
-                property("text-overflow", "ellipsis")
+                property("white-space", "normal")
+                property("overflow", "visible")
+                property("text-overflow", "unset")
             }
         }
     ) {

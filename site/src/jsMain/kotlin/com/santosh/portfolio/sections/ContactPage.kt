@@ -7,6 +7,8 @@ import com.santosh.portfolio.utility.SectionHeader
 import com.santosh.portfolio.utility.SpanText
 import com.santosh.portfolio.utility.ThemeColors
 import com.varabyte.kobweb.compose.css.AlignItems
+import com.varabyte.kobweb.compose.css.Overflow
+import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -30,52 +32,64 @@ fun ContactPage() {
     val isDarkMode = ThemeColors.isDarkMode.current //
     val textColor = if (isDarkMode.value) Color.white else Color.black
     MainLayout {
-        Column(
+        Box(
             modifier = Modifier
-                .alignItems(AlignItems.Center)
-                .margin(bottom = 20.px)
+                .fillMaxSize()
+                .overflow(Overflow.Auto)
+                .padding(bottom = 80.px)
         ) {
-            SectionHeader("📞 Contact Us")
-            SpanText("Got questions? Fill out the form below and we'll get back to you!")
-
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .maxWidth(420.px)
-                    .margin(leftRight = 16.px, top = 20.px)
-                    .padding(24.px)
-                    .backgroundColor(Color("#FFFFFF")) // White background for form
-                    .borderRadius(12.px) // Softer rounded edges
-                    .border(1.px, LineStyle.Solid, Color("#D3D3D3")) // Light grey border
-                   // .margin { top(20.px) }
-                    .styleModifier { property("box-shadow", "4px 4px 15px rgba(0, 0, 0, 0.1)") } // Subtle shadow for depth
+                    .alignItems(AlignItems.Center)
             ) {
-                FormInput(label = "Your Name", placeholder = "Enter your name", inputType = InputType.Text)
-                FormInput(label = "Your Email", placeholder = "Enter your email", inputType = InputType.Email)
-                FormInput(label = "Message", placeholder = "Write your message...", isTextArea = true)
+                SectionHeader("📞 Contact Us")
+                SpanText("Got questions? Fill out the form below and we'll get back to you!")
 
-                Button(
-                    onClick = { /* Add LinkedIn or Contact link */ },
+                Column(
                     modifier = Modifier
-                        .margin(top = 16.px)
-                        .backgroundColor(if (isDarkMode.value) Color("#4facfe") else Color("#007BFF"))
-                        .color(Color.white)
-                        .borderRadius(8.px)
-                        .padding(10.px, 12.px)
+                        .fillMaxWidth()
+                        .maxWidth(420.px)
+                        .margin(leftRight = 16.px, top = 20.px)
+                        .padding(24.px)
+                        .backgroundColor(Color("#FFFFFF")) // White background for form
+                        .borderRadius(12.px) // Softer rounded edges
+                        .border(1.px, LineStyle.Solid, Color("#D3D3D3")) // Light grey border
+                        // .margin { top(20.px) }
+                        .styleModifier {
+                            property(
+                                "box-shadow",
+                                "4px 4px 15px rgba(0, 0, 0, 0.1)"
+                            )
+                        } // Subtle shadow for depth
                 ) {
-                    Text("📩 Connect with Me")
-                }
-            }
+                    FormInput(label = "Your Name", placeholder = "Enter your name", inputType = InputType.Text)
+                    FormInput(label = "Your Email", placeholder = "Enter your email", inputType = InputType.Email)
+                    FormInput(label = "Message", placeholder = "Write your message...", isTextArea = true)
 
-            // Social Media Links
-            Row(
-                modifier = Modifier
-                    .gap(15.px)
-                    .margin(top = 20.px)
-            ) {
-                SocialButton("LinkedIn", "/icons/linkedin.svg", "https://www.linkedin.com/in/yourprofile")
-                SocialButton("GitHub", "/icons/github1.svg", "https://github.com/yourprofile")
-                SocialButton("Email", "/icons/mail.svg", "mailto:your@email.com")
+                    Button(
+                        onClick = { /* Add LinkedIn or Contact link */ },
+                        modifier = Modifier
+                            .margin(top = 16.px)
+                            .backgroundColor(if (isDarkMode.value) Color("#4facfe") else Color("#007BFF"))
+                            .color(Color.white)
+                            .borderRadius(8.px)
+                            .padding(10.px, 12.px)
+                    ) {
+                        Text("📩 Connect with Me")
+                    }
+                }
+
+                // Social Media Links
+                Row(
+                    modifier = Modifier
+                        .gap(15.px)
+                        .margin(top = 20.px, bottom = 40.px)
+                ) {
+                    SocialButton("LinkedIn", "/icons/linkedin.svg", "https://www.linkedin.com/in/yourprofile")
+                    SocialButton("GitHub", "/icons/github1.svg", "https://github.com/yourprofile")
+                    SocialButton("Email", "/icons/mail.svg", "mailto:your@email.com")
+                }
             }
         }
     }
@@ -104,10 +118,10 @@ fun FormInput(label: String,placeholder: String,inputType: InputType<String> = I
                 attrs = {
                     placeholder(placeholder)
                     style {
-                        property("width", "100%") // Example usage inside a column
+                        property("width", "100%")
                         property("padding", "10px")
                         property("border-radius", "6px")
-                        property("border", "1px solid #D3D3D3") // Equivalent to border(1.px, LineStyle.Solid, Color("#D3D3D3"))
+                        property("border", "1px solid #D3D3D3")
                         property("font-size", "14px")
                     }
                 }
@@ -118,10 +132,10 @@ fun FormInput(label: String,placeholder: String,inputType: InputType<String> = I
                 attrs = {
                     placeholder(placeholder)
                     style {
-                        property("width", "100%") // Example usage inside a column
+                        property("width", "100%")
                         property("padding", "10px")
                         property("border-radius", "6px")
-                        property("border", "1px solid #D3D3D3") // Equivalent to border(1.px, LineStyle.Solid, Color("#D3D3D3"))
+                        property("border", "1px solid #D3D3D3")
                         property("font-size", "14px")
                     }
                 }
