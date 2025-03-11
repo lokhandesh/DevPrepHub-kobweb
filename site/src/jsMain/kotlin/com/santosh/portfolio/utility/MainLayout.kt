@@ -23,6 +23,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.compose.ui.modifiers.zIndex
 import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.core.rememberPageContext
+import com.varabyte.kobweb.silk.theme.colors.ColorPalettes
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.AlignItems
 import org.jetbrains.compose.web.css.Color
@@ -31,6 +32,7 @@ import org.jetbrains.compose.web.css.FlexDirection
 import org.jetbrains.compose.web.css.JustifyContent
 import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.css.rgb
 import org.jetbrains.compose.web.css.vh
 import org.jetbrains.compose.web.dom.Button
 import org.jetbrains.compose.web.dom.Div
@@ -43,10 +45,16 @@ fun MainLayout(content: @Composable () -> Unit) {
 
     val isDarkMode = ThemeColors.isDarkMode.current //
     val backgroundColor = if (isDarkMode.value) Color("#121212") else Color("#F8F9FA")
-    val backgroundGradient = if (isDarkMode.value)
+   /* val backgroundGradient = if (isDarkMode.value)
         "linear-gradient(to right, #0F2027, #203A43, #2C5364)"
     else
-        "linear-gradient(to right, #F8F9FA, #00f2fe)"
+        "linear-gradient(to right, #F8F9FA, #00f2fe)"*/
+
+    val backgroundGradient = if (isDarkMode.value)
+        "rgb(34, 63, 94)" // Dark mode solid color
+    else
+        "rgb(168, 236, 255)"
+
 
     var isMenuOpen by remember { mutableStateOf(false) } // Toggle for mobile menu
     val isMobile = remember { mutableStateOf(window.innerWidth <= 768) }
