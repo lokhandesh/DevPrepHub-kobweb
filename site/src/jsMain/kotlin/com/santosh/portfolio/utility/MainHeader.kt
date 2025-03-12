@@ -129,16 +129,19 @@ fun DropdownMenu(ctx: PageContext, title: String, items: List<Pair<String, Strin
 
     Column(
         modifier = Modifier
-            .position(Position.Relative)
+            .position(Position.Relative) // Ensure the dropdown appears relative to the parent
             .cursor(Cursor.Pointer)
             .onClick { isExpanded = !isExpanded }
     ) {
+        // Title of the dropdown
         Span(
             attrs = {
                 style {
-                    property("color", textColor)
+                    property("color", textColor.toString())
                     property("font-size", "18px")
+                    property("cursor", "pointer")
                     property("transition", "color 0.3s ease")
+                    // Apply styles for hover effect if required
                 }
                 classes("hover-effect")
             }
@@ -146,6 +149,7 @@ fun DropdownMenu(ctx: PageContext, title: String, items: List<Pair<String, Strin
             Text(title)
         }
 
+        // Dropdown menu (only visible when isExpanded is true)
         if (isExpanded) {
             Column(
                 modifier = Modifier
@@ -153,18 +157,22 @@ fun DropdownMenu(ctx: PageContext, title: String, items: List<Pair<String, Strin
                     .backgroundColor(Color("#2A2A2A"))
                     .borderRadius(8.px)
                     .padding(10.px)
-                    .margin(top = 5.px)
+                    .margin(top = 25.px)
                     .styleModifier { property("box-shadow", "0px 4px 10px rgba(0, 0, 0, 0.2)") }
             ) {
                 items.forEach { (label, route) ->
+                    // Individual dropdown item
                     Span(
                         attrs = {
                             style {
                                 property("color", "#FFFFFF")
-                                property("padding", "5px 10px")
+                                property("padding", "10px 20px")
                                 property("cursor", "pointer")
-                                property("display", "block")
                                 property("transition", "background 0.3s ease")
+                                property("border-radius", "5px")
+                                property("margin-bottom", "5px") // Space between items
+                                // Hover effect styling
+                                property("background-color", if (isExpanded) "#444444" else "transparent")
                             }
                             onClick {
                                 ctx.router.navigateTo(route)
@@ -173,7 +181,7 @@ fun DropdownMenu(ctx: PageContext, title: String, items: List<Pair<String, Strin
                             classes("hover-effect")
                         }
                     ) {
-                        Text(label)
+                        Text(label) // Display each item
                     }
                 }
             }
