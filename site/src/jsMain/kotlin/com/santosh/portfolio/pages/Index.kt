@@ -116,7 +116,7 @@ fun HomePage() {
                                 property("color", textColor.toString())
                             }
                         }) {
-                            Text("Mobile Lead Developer")
+                            Text("Mobile Lead ")
                         }
                         Text(" specializing in ")
                         Span(attrs = {
