@@ -86,8 +86,8 @@ fun ContactPage() {
                         .gap(15.px)
                         .margin(top = 20.px, bottom = 40.px)
                 ) {
-                    SocialButton("LinkedIn", "/icons/linkedin.svg", "https://www.linkedin.com/in/yourprofile")
-                    SocialButton("GitHub", "/icons/github1.svg", "https://github.com/yourprofile")
+                    SocialButton("LinkedIn", "/icons/linkedin.svg", "https://www.linkedin.com/in/santosh-lokhande-5718476a/")
+                    SocialButton("GitHub", "/icons/github1.svg", "https://github.com/lokhandesh/")
                     SocialButton("Email", "/icons/mail.svg", "mailto:your@email.com")
                 }
             }
