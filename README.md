@@ -1,4 +1,11 @@
 
+## Mockups
+
+
+![Mobile Mockups](https://raw.githubusercontent.com/lokhandesh/DevPrepHub-kobweb/main/images/Iphone-Mocups.png)
+
+![Mobile Mockups](https://raw.githubusercontent.com/lokhandesh/DevPrepHub-kobweb/main/images/MacMini.png)
+
 ## DevPrep Hub for Mobile Developers
 
 DevPrep Hub is my personal project aimed at helping mobile developers prepare for job interviews across Android, iOS, and Kotlin Multiplatform. This site serves as a curated collection of resources, interview tips, and study materials based on my experience in mobile development.
