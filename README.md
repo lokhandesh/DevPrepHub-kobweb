@@ -1,5 +1,22 @@
+
+## DevPrep Hub for Mobile Developers
+
+DevPrep Hub is my personal project aimed at helping mobile developers prepare for job interviews across Android, iOS, and Kotlin Multiplatform. This site serves as a curated collection of resources, interview tips, and study materials based on my experience in mobile development.
+## Technology Stack
+
+1) [Kotlin](https://kotlinlang.org/)
+2) [Kobweb](https://github.com/varabyte/kobweb)
+3) [Compose Multiplateform](https://github.com/JetBrains/compose-multiplatform)
+
 ## Getting Started
 
+Please visit Kobweb's [Official Site](https://kobweb.varabyte.com/docs/getting-started/what-is-kobweb) and [Github Repo](https://github.com/varabyte/kobweb/) to learn more about Koweb. Since Kobweb is still in early stage you will get most of the details on github repository. After kobweb setup you can follow below steps.
+
+Clone the repository and follow below steps:
+
+```bash
+$ git clone https://github.com/lokhandesh/DevPrepHub-kobweb
+```
 First, run the development server by typing the following command in a terminal under the `site` folder:
 
 ```bash
@@ -9,7 +26,7 @@ $ kobweb run
 
 Open [http://localhost:8080](http://localhost:8080) with your browser to see the result.
 
-You can use any editor you want for the project, but we recommend using **IntelliJ IDEA Community Edition** downloaded
+ we recommend using **IntelliJ IDEA Community Edition** downloaded
 using the [Toolbox App](https://www.jetbrains.com/toolbox-app/).
 
 Press `Q` in the terminal to gracefully stop the server.
@@ -40,6 +57,7 @@ is sitting around watching the console in that case anyway. To do that, use:
 kobweb run --env prod --notty
 ```
 
-Kobweb also supports exporting to a static layout which is compatible with static hosting providers, such as GitHub
-Pages, Netlify, Firebase, any presumably all the others. You can read more about that approach here:
-https://bitspittle.dev/blog/2022/staticdeploy
+
+## License
+
+Copyright 2025 Santosh Lokhande
