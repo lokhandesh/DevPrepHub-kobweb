@@ -14,8 +14,10 @@ import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.flex
+import com.varabyte.kobweb.compose.ui.modifiers.flexGrow
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.height
+import com.varabyte.kobweb.compose.ui.modifiers.justifyContent
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.maxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.padding
@@ -27,6 +29,7 @@ import com.varabyte.kobweb.silk.theme.shapes.Circle
 import com.varabyte.kobweb.silk.theme.shapes.clip
 import org.jetbrains.compose.web.css.AlignItems
 import org.jetbrains.compose.web.css.Color
+import org.jetbrains.compose.web.css.JustifyContent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Li
 import org.jetbrains.compose.web.dom.P
@@ -48,96 +51,112 @@ fun AboutPage() {
                 .padding(40.px)
                 .maxWidth(900.px)
         ) {
-            // Header
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .alignItems(AlignItems.Center)
-                    .gap(30.px)
+            Column(
+                modifier = Modifier.flexGrow(1) // This makes sure the content takes up space
             ) {
-                // Profile Image
-                Image(
-                    "/icons/santosh.jpeg",
-                    alt = "Santosh - Mobile Lead",
+                // Header
+                Row(
                     modifier = Modifier
-                        .width(150.px)
-                        .height(150.px)
-                        .clip(Circle())
-                        .styleModifier {
-                            property("box-shadow", "0px 4px 10px rgba(0, 0, 0, 0.2)")
-                        }
-                )
-
-                // Intro Text
-                Column(
-                    modifier = Modifier.flex(1)
+                        .fillMaxWidth()
+                        .alignItems(AlignItems.Center)
+                        .gap(30.px)
                 ) {
-                    Span(
-                        attrs = {
-                            style {
-                                property("font-size", "26px")
-                                property("font-weight", "bold")
-                                property("color", textColor.toString())
+                    // Profile Image
+                    Image(
+                        "/icons/santosh.jpeg",
+                        alt = "Santosh - Mobile Lead",
+                        modifier = Modifier
+                            .width(150.px)
+                            .height(150.px)
+                            .clip(Circle())
+                            .styleModifier {
+                                property("box-shadow", "0px 4px 10px rgba(0, 0, 0, 0.2)")
                             }
-                        }
-                    ) {
-                        Text("👋 Hi, I'm Santosh")
-                    }
+                    )
 
-                    P(
-                        attrs = {
-                            style {
-                                property("font-size", "18px")
-                                property("line-height", "1.6")
-                                property("font-weight", "bold")
-                                property("color", textColor.toString())
-                            }
-                        }
+                    // Intro Text
+                    Column(
+                        modifier = Modifier.flex(1)
                     ) {
-                        Text("Senior Mobile Lead Developer with expertise in ")
-                        Span() {
-                            Text("Android, iOS, and Kotlin Multiplatform (KMP).")
+                        Span(
+                            attrs = {
+                                style {
+                                    property("font-size", "26px")
+                                    property("font-weight", "bold")
+                                    property("color", textColor.toString())
+                                }
+                            }
+                        ) {
+                            Text("👋 Hi, I'm Santosh")
                         }
-                        Text(" I specialize in building ")
-                        Span() {
-                            Text("scalable, high-performance mobile applications")
+
+                        P(
+                            attrs = {
+                                style {
+                                    property("font-size", "18px")
+                                    property("line-height", "1.6")
+                                    property("font-weight", "bold")
+                                    property("color", textColor.toString())
+                                }
+                            }
+                        ) {
+                            Text("Senior Mobile Lead Developer with expertise in ")
+                            Span() {
+                                Text("Android, iOS, and Kotlin Multiplatform (KMP).")
+                            }
+                            Text(" I specialize in building ")
+                            Span() {
+                                Text("scalable, high-performance mobile applications")
+                            }
+                            Text(" while mentoring developers to follow best practices.")
                         }
-                        Text(" while mentoring developers to follow best practices.")
                     }
                 }
-            }
 
-            // Section: Mission
-            AboutCard(
-                "🎯 Our Mission",
-                "At Dev Prep Hub, we empower mobile developers to succeed in job interviews by providing expert insights, structured interview topics, and resume guidance."
-            )
+                // Section: Mission
+                AboutCard(
+                    "🎯 Our Mission",
+                    "At Dev Prep Hub, we empower mobile developers to succeed in job interviews by providing expert insights, structured interview topics, and resume guidance."
+                )
 
-            // Section: Experience
-            AboutCard(
-                "👨‍💻 My Experience",
-                "With over a decade of experience, I have developed enterprise-grade mobile applications for banking, finance, and fintech sectors. My expertise includes security, scalable architecture, and performance optimization—ensuring seamless experiences for millions of users."
-            )
-            // Section: Why Dev Prep Hub
-            AboutCard(
-                "📌 Why Dev Prep Hub?",
-                """
+                // Section: Experience
+                AboutCard(
+                    "👨‍💻 My Experience",
+                    "With over a decade of experience, I have developed enterprise-grade mobile applications for banking, finance, and fintech sectors. My expertise includes security, scalable architecture, and performance optimization—ensuring seamless experiences for millions of users."
+                )
+                // Section: Why Dev Prep Hub
+                AboutCard(
+                    "📌 Why Dev Prep Hub?",
+                    """
                 ✅ Real-world interview topics  
                 ✅ Insights from industry experts  
                 ✅ Deep coverage of Android, iOS, and KMP  
                 ✅ Resume tips to make you stand out  
             """.trimIndent()
-            )
+                )
 
-            // Social Links
-            Row(
-                modifier = Modifier
-                    .gap(20.px)
-                    .margin(top = 20.px)
-            ) {
-                SocialButton("LinkedIn", "/icons/linkedin.svg", "https://www.linkedin.com/in/santosh-lokhande-5718476a/")
-                SocialButton("GitHub", "/icons/github1.svg", "https://github.com/lokhandesh/")
-                SocialButton("Contact", "/icons/mail.svg", "/contact")
+                // Social Links
+                Row(
+                    modifier = Modifier
+                        .gap(20.px)
+                        .margin(top = 20.px, bottom = 80.px)
+                        .alignItems(AlignItems.Center)
+                        .justifyContent(JustifyContent.Center)
+                        .styleModifier {
+                            property("display", "flex") // Ensures flex layout
+                            property("width", "100%") // Takes full width
+                            property("position", "relative") // Keeps position stable
+                         //   property("margin-bottom", "env(safe-area-inset-bottom)")
+                        }
+                ) {
+                    SocialButton(
+                        "LinkedIn",
+                        "/icons/linkedin.svg",
+                        "https://www.linkedin.com/in/santosh-lokhande-5718476a/"
+                    )
+                    SocialButton("GitHub", "/icons/github1.svg", "https://github.com/lokhandesh/")
+                    SocialButton("Contact", "/icons/mail.svg", "/contact")
+                }
             }
         }
     }
@@ -187,4 +206,5 @@ fun AboutCard(title: String, content: String) {
             }
         }
     }
+
 }

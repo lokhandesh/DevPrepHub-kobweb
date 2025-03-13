@@ -71,7 +71,8 @@ fun MainLayout(content: @Composable () -> Unit) {
                 .styleModifier {
                     property("background", backgroundGradient)
                     property("overflow", "hidden") // Prevent scrolling of MainLayout
-                    property("height", "100vh") // Ensure it takes full viewport height
+                    property("height", "100dvh") // Ensure it takes full viewport height
+                    property("position", "fixed") // Fix position
                 }
         ) {
 
@@ -192,7 +193,7 @@ fun MainLayout(content: @Composable () -> Unit) {
                     .fillMaxSize()
                     .styleModifier {
                         property("background", backgroundGradient)
-                        property("min-height", "100vh")  // Ensure full viewport height
+                        property("min-height", "100dvh")  // Ensure full viewport height
                         property("display", "flex")
                         property("flex-direction", "column")
                     }
