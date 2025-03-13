@@ -38,7 +38,8 @@ import org.jetbrains.compose.web.dom.Text
 fun HomePage() {
     val ctx = rememberPageContext()
     val isDarkMode = ThemeColors.isDarkMode.current //
-    val textColor = if (isDarkMode.value) Color.white else Color.black
+  //  val textColor = if (isDarkMode.value) Color.white else Color.black
+    val textColor = if (isDarkMode.value) Color.black else Color.white
     MainLayout {
         Box(
             modifier = Modifier
@@ -58,7 +59,8 @@ fun HomePage() {
                 modifier = Modifier
                     .maxWidth(600.px)
                     .width(90.percent)
-                    .backgroundColor(if (isDarkMode.value) Color("#1E1E1E") else Color("#F5F5F5"))
+                  //  .backgroundColor(if (isDarkMode.value) Color("#1E1E1E") else Color("#F5F5F5"))
+                    .backgroundColor(if (isDarkMode.value) Color("#F5F5F5") else Color("#1E1E1E"))
                     .borderRadius(16.px)
                     .padding(24.px)
                     .margin(top = 40.px, bottom = 40.px)
@@ -191,7 +193,8 @@ fun HomePage() {
                             .maxWidth(300.px) // Keeps buttons from stretching too wide on desktop
                             .width(90.percent)
                             .margin(top = 16.px)
-                            .backgroundColor(if (isDarkMode.value) Color("#4facfe") else Color("#007BFF"))
+                           // .backgroundColor(if (isDarkMode.value) Color("#4facfe") else Color("#007BFF"))
+                            .backgroundColor(if (isDarkMode.value) Color("#007BFF") else Color("#4facfe"))
                             .color(Color.white)
                             .borderRadius(8.px)
                             .padding(10.px, 12.px)

@@ -30,7 +30,6 @@ import org.jetbrains.compose.web.dom.TextArea
 @Composable
 fun ContactPage() {
     val isDarkMode = ThemeColors.isDarkMode.current //
-    val textColor = if (isDarkMode.value) Color.white else Color.black
     MainLayout {
         Box(
             modifier = Modifier
@@ -71,7 +70,8 @@ fun ContactPage() {
                         onClick = { /* Add LinkedIn or Contact link */ },
                         modifier = Modifier
                             .margin(top = 16.px)
-                            .backgroundColor(if (isDarkMode.value) Color("#4facfe") else Color("#007BFF"))
+                          //  .backgroundColor(if (isDarkMode.value) Color("#4facfe") else Color("#007BFF"))
+                            .backgroundColor(if (isDarkMode.value) Color("#007BFF") else Color("#4facfe"))
                             .color(Color.white)
                             .borderRadius(8.px)
                             .padding(10.px, 12.px)

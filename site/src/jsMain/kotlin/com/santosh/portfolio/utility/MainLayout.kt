@@ -44,16 +44,13 @@ import org.jetbrains.compose.web.dom.Text
 fun MainLayout(content: @Composable () -> Unit) {
 
     val isDarkMode = ThemeColors.isDarkMode.current //
-    val backgroundColor = if (isDarkMode.value) Color("#121212") else Color("#F8F9FA")
-   /* val backgroundGradient = if (isDarkMode.value)
-        "linear-gradient(to right, #0F2027, #203A43, #2C5364)"
-    else
-        "linear-gradient(to right, #F8F9FA, #00f2fe)"*/
+    val backgroundColor = if (isDarkMode.value) Color("#F8F9FA") else Color("#121212")
+
 
     val backgroundGradient = if (isDarkMode.value)
-        "rgb(34, 63, 94)" // Dark mode solid color
+        "rgb(168, 236, 255)" // Dark mode solid color
     else
-        "rgb(168, 236, 255)"
+        "rgb(34, 63, 94)"
 
 
     var isMenuOpen by remember { mutableStateOf(false) } // Toggle for mobile menu
@@ -96,7 +93,8 @@ fun MainLayout(content: @Composable () -> Unit) {
                                 property("border", "none")
                                 property("cursor", "pointer")
                                 property("font-size", "18px")
-                                property("color", if (isDarkMode.value) "white" else "black")
+                            //    property("color", if (isDarkMode.value) "white" else "black")
+                                property("color", if (isDarkMode.value) "black" else "white")
                                 property("padding", "5px") // Reduce padding
                                 property("min-width", "0px") // Ensures no extra spacing
                             }
@@ -114,7 +112,8 @@ fun MainLayout(content: @Composable () -> Unit) {
                                 property("border", "none")
                                 property("cursor", "pointer")
                                 property("font-size", "24px")
-                                property("color", if (isDarkMode.value) "white" else "black")
+                             //   property("color", if (isDarkMode.value) "white" else "black")
+                                property("color", if (isDarkMode.value) "black" else "white")
                                 property("padding", "5px") // Reduce padding
                                 property("min-width", "0px") // Ensures no extra spacing
                             }

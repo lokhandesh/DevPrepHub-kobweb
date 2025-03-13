@@ -41,7 +41,8 @@ import org.jetbrains.compose.web.dom.Ul
 @Composable
 fun AboutPage() {
     val isDarkMode = ThemeColors.isDarkMode.current
-    val textColor = if (isDarkMode.value) Color.white else Color.black
+   // val textColor = if (isDarkMode.value) Color.white else Color.black
+    val textColor = if (isDarkMode.value) Color.black else Color.white
 
     MainLayout {
         Column(
@@ -166,7 +167,8 @@ fun AboutPage() {
 @Composable
 fun AboutCard(title: String, content: String) {
     val isDarkMode = ThemeColors.isDarkMode.current
-    val cardBgColor = if (isDarkMode.value) Color("#222831") else Color("#FFFFFF")
+  //  val cardBgColor = if (isDarkMode.value) Color("#222831") else Color("#FFFFFF")
+    val cardBgColor = if (isDarkMode.value) Color("#FFFFFF") else Color("#222831")
 
     Box(
         modifier = Modifier
@@ -186,7 +188,8 @@ fun AboutCard(title: String, content: String) {
                     style {
                         property("font-size", "22px")
                         property("font-weight", "bold")
-                        property("color", if (isDarkMode.value) "#00f2fe" else "#007BFF")
+                      //  property("color", if (isDarkMode.value) "#00f2fe" else "#007BFF")
+                        property("color", if (isDarkMode.value) "#007BFF" else "#00f2fe")
                     }
                 }
             ) {
@@ -197,7 +200,7 @@ fun AboutCard(title: String, content: String) {
                 attrs = {
                     style {
                         property("font-size", "16px")
-                        property("color", if (isDarkMode.value) Color.white else Color.black)
+                        property("color", if (isDarkMode.value) Color.black else Color.white)
                         property("line-height", "1.6")
                     }
                 }

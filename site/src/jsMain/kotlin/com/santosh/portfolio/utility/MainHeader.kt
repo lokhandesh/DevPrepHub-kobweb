@@ -19,9 +19,12 @@ import org.jetbrains.compose.web.dom.Text
 fun MainHeader(isDarkMode: Boolean, onThemeToggle: () -> Unit) {
 
     //var isDarkMode by remember { mutableStateOf(true) }
-    val backgroundColor = if (isDarkMode) Color("#1E1E1E") else Color("#F0F0F0")
-    val textColor = if (isDarkMode) Color.white else Color.black
-    val buttonBgColor = if (isDarkMode) Color("#444444") else Color("#FFFFFF")
+  //  val backgroundColor = if (isDarkMode) Color("#1E1E1E") else Color("#F0F0F0")
+    val backgroundColor = if (isDarkMode) Color("#F0F0F0") else Color("#1E1E1E")
+  //  val textColor = if (isDarkMode) Color.white else Color.black
+    val textColor = if (isDarkMode) Color.black else Color.white
+  //  val buttonBgColor = if (isDarkMode) Color("#444444") else Color("#FFFFFF")
+    val buttonBgColor = if (isDarkMode) Color("#FFFFFF") else Color("#444444")
 
     val ctx = rememberPageContext()
     var isMenuOpen by remember { mutableStateOf(false) } // Toggle for mobile menu
@@ -94,10 +97,9 @@ fun MainHeader(isDarkMode: Boolean, onThemeToggle: () -> Unit) {
                     onClick { onThemeToggle() }
                 }
             ) {
-                Text(if (isDarkMode) "☀️ Light Mode" else "🌙 Dark Mode")
+                Text(if (isDarkMode) "🌙 Dark Mode" else "☀️ Light Mode")
             }
         }
-
 
     }
 

@@ -8,7 +8,7 @@ import org.jetbrains.compose.web.dom.Text
 @Composable
 fun SpanText(text: String) {
     val isDarkMode = ThemeColors.isDarkMode.current
-    val textColor = if (isDarkMode.value) Color.white else Color.black
+    val textColor = if (isDarkMode.value) Color.black else Color.white
     Span(
         attrs = {
             style {

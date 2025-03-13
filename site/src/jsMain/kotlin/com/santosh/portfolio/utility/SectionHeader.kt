@@ -11,7 +11,8 @@ import org.jetbrains.compose.web.dom.Text
 @Composable
 fun SectionHeader(text:String) {
     val isDarkMode = ThemeColors.isDarkMode.current // ✅ Correct way to access compositionLocalOf()
-    val textColor = if (isDarkMode.value) Color.white else Color.black
+   // val textColor = if (isDarkMode.value) Color.white else Color.black
+    val textColor = if (isDarkMode.value) Color.black else Color.white
     H1(
         attrs = {
             style {
