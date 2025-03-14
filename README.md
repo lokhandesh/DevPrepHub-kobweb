@@ -62,4 +62,4 @@ kobweb run --env prod
 
 ## License
 
-Copyright 2025 Santosh Lokhande
+Copyright ©2025 Santosh Lokhande
