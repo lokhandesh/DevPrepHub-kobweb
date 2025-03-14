@@ -24,6 +24,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.zIndex
 import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.theme.colors.ColorPalettes
+import kotlinx.browser.document
 import kotlinx.browser.window
 import org.jetbrains.compose.web.css.AlignItems
 import org.jetbrains.compose.web.css.Color
@@ -38,6 +39,7 @@ import org.jetbrains.compose.web.dom.Button
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Span
 import org.jetbrains.compose.web.dom.Text
+import org.w3c.dom.HTMLElement
 
 
 @Composable
@@ -98,7 +100,10 @@ fun MainLayout(content: @Composable () -> Unit) {
                                 property("padding", "5px") // Reduce padding
                                 property("min-width", "0px") // Ensures no extra spacing
                             }
-                            onClick { isDarkMode.value = !isDarkMode.value }
+                            onClick {
+                                isDarkMode.value = !isDarkMode.value
+                                updateThemeColor(if (isDarkMode.value) "rgb(168, 236, 255)" else "rgb(34, 63, 94)")
+                            }
                         }
                     ) {
                         Text(if (isDarkMode.value) "☀️" else "🌙")
@@ -218,5 +223,7 @@ fun MainLayout(content: @Composable () -> Unit) {
         }
     }
 }
+
+
 
 
