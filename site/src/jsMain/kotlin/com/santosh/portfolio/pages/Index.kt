@@ -46,20 +46,17 @@ fun HomePage() {
                 .fillMaxSize()
                 .display(DisplayStyle.Flex)
                 .flexDirection(FlexDirection.Column)
-                .justifyContent(JustifyContent.Center)
                 .alignItems(AlignItems.Center)
                 .styleModifier {
                     property("min-height", "100vh") // Ensures full height
                     property("overflow-y", "auto") // Enables scrolling when needed
-                    property("padding-top", "80px") // Ensures space on top
-                    property("padding-bottom", "60px")
+                    property("padding", "60px 20px") // Ensures spacing for mobile
                 }
         ) {
             Column(
                 modifier = Modifier
                     .maxWidth(600.px)
-                    .width(90.percent)
-                  //  .backgroundColor(if (isDarkMode.value) Color("#1E1E1E") else Color("#F5F5F5"))
+                    .width(100.percent) // Ensure content does not shrink
                     .backgroundColor(if (isDarkMode.value) Color("#F5F5F5") else Color("#1E1E1E"))
                     .borderRadius(16.px)
                     .padding(24.px)
@@ -71,12 +68,11 @@ fun HomePage() {
                     }
             ) {
                 Column(
-                    modifier = Modifier.alignItems(AlignItems.Center)
-                        .maxWidth(600.px) // Makes content fit mobile screens
-                        .width(90.percent)
+                    modifier = Modifier
+                        .width(100.percent)
                         .alignItems(AlignItems.Center)
                         .styleModifier {
-                            property("overflow", "auto") // Ensures scrolling inside if needed
+                            property("text-align", "center")
                         }
                 ) {
 
@@ -94,6 +90,7 @@ fun HomePage() {
                                 property("font-size", "26px")
                                 property("font-weight", "bold")
                                 property("color", textColor.toString())  // Add color if necessary
+                                property("text-align", "center")
                             }
                         }
                     ) {
@@ -108,6 +105,8 @@ fun HomePage() {
                                 property("color", textColor.toString())
                                 property("text-align", "center")
                                 property("line-height", "1.6")
+                                property("max-width", 550.px)
+                                property("margin", "10px auto")
                             }
                         }
                     ) {
@@ -173,8 +172,7 @@ fun HomePage() {
                         modifier = Modifier
                             .margin(top = 20.px)
                             .gap(15.px)
-                            .maxWidth(600.px)
-                            .width(90.percent)
+                            .width(100.percent)
                             .flexWrap(FlexWrap.Wrap)
                             .justifyContent(JustifyContent.Center)
                     ) {
@@ -191,13 +189,16 @@ fun HomePage() {
                         onClick = { /* Add LinkedIn or Contact link */ },
                         modifier = Modifier
                             .maxWidth(300.px) // Keeps buttons from stretching too wide on desktop
-                            .width(90.percent)
-                            .margin(top = 16.px)
+                            .width(100.percent)
+                            .margin(top = 16.px, bottom = 10.px)
                            // .backgroundColor(if (isDarkMode.value) Color("#4facfe") else Color("#007BFF"))
                             .backgroundColor(if (isDarkMode.value) Color("#007BFF") else Color("#4facfe"))
                             .color(Color.white)
                             .borderRadius(8.px)
                             .padding(10.px, 12.px)
+                            .styleModifier {
+                                property("text-align", "center") // Ensures button text is centered
+                            }
                     ) {
                         Text("📩 Connect with Me")
                     }
@@ -218,7 +219,7 @@ fun SocialButton(name: String, iconPath: String, url: String) {
             property("align-items", "center")
             property("gap", "8px")
             property("text-decoration", "none")
-            property("padding", "8px 12px")
+            property("padding", "8px 8px")
             property("border-radius", "8px")
             property("background", "white")
             property("color", "black")

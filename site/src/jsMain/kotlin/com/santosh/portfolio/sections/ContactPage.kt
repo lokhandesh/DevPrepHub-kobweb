@@ -20,7 +20,13 @@ import org.jetbrains.compose.web.attributes.placeholder
 import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.px
 import com.varabyte.kobweb.silk.components.forms.Button
+import org.jetbrains.compose.web.css.DisplayStyle
+import org.jetbrains.compose.web.css.FlexDirection
+import org.jetbrains.compose.web.css.JustifyContent
 import org.jetbrains.compose.web.css.LineStyle
+import org.jetbrains.compose.web.css.percent
+import org.jetbrains.compose.web.css.vh
+import org.jetbrains.compose.web.css.vw
 import org.jetbrains.compose.web.dom.Input
 import org.jetbrains.compose.web.dom.Span
 import org.jetbrains.compose.web.dom.Text
@@ -34,13 +40,21 @@ fun ContactPage() {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .overflow(Overflow.Auto)
-                .padding(bottom = 80.px)
+                .display(DisplayStyle.Flex)
+                .flexDirection(FlexDirection.Column)
+                .alignItems(AlignItems.Center)
+                .justifyContent(JustifyContent.Start)
+                .padding(top = 5.vh, bottom = 5.vh)
+                .styleModifier {
+                    property("min-height", "100dvh") // Ensures full viewport height
+                    property("overflow-y", "auto") // Enables scrolling when needed
+                }
         ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .alignItems(AlignItems.Center)
+                    .gap(10.px)
             ) {
                 SectionHeader("📞 Contact Us")
                 SpanText("Got questions? Fill out the form below and we'll get back to you!")
@@ -49,7 +63,7 @@ fun ContactPage() {
                     modifier = Modifier
                         .fillMaxWidth()
                         .maxWidth(420.px)
-                        .margin(leftRight = 16.px, top = 20.px)
+                        .margin(leftRight = 5.vw, top = 20.px)
                         .padding(24.px)
                         .backgroundColor(Color("#FFFFFF")) // White background for form
                         .borderRadius(12.px) // Softer rounded edges
@@ -70,6 +84,7 @@ fun ContactPage() {
                         onClick = { /* Add LinkedIn or Contact link */ },
                         modifier = Modifier
                             .margin(top = 16.px)
+                            .width(100.percent)
                           //  .backgroundColor(if (isDarkMode.value) Color("#4facfe") else Color("#007BFF"))
                             .backgroundColor(if (isDarkMode.value) Color("#007BFF") else Color("#4facfe"))
                             .color(Color.white)
@@ -84,7 +99,7 @@ fun ContactPage() {
                 Row(
                     modifier = Modifier
                         .gap(15.px)
-                        .margin(top = 20.px, bottom = 40.px)
+                        .margin(top = 20.px, bottom = 10.vh)
                 ) {
                     SocialButton("LinkedIn", "/icons/linkedin.svg", "https://www.linkedin.com/in/santosh-lokhande-5718476a/")
                     SocialButton("GitHub", "/icons/github1.svg", "https://github.com/lokhandesh/")
