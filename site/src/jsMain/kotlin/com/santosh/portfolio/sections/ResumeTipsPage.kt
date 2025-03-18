@@ -105,10 +105,13 @@ fun ResumeTipsPage() {
             )
             Row(
                 modifier = Modifier
+                    .fillMaxWidth()
+                    .maxWidth(1200.px)
                     .gap(20.px)
                     .margin(top = 0.px, bottom = 60.px)
-                    .flexWrap(FlexWrap.Wrap) // Responsive wrap for smaller screens
+                    .flexWrap(FlexWrap.Wrap)
                     .justifyContent(JustifyContent.Center)
+                    .padding(leftRight = 20.px)
             ) {
                 topics.forEach { topic ->
                     TopicCardWithNewDesign(topic.title, topic.points, topic.icon, topic.background)
