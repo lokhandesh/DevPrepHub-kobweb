@@ -41,7 +41,7 @@ fun TopicCardWithNewDesign(title: String, points: List<String>, iconPath: String
             .borderRadius(10.px)
             .styleModifier {
                 property("transition", "transform 0.3s ease")
-                property("cursor", "pointer")
+                property("cursor", "default")
                 property("background", background) // Apply gradient background
                 property("box-shadow", "0px 4px 10px rgba(0, 0, 0, 0.3)") // Fix shadow styling
                 property("transition", "transform 0.3s ease")
