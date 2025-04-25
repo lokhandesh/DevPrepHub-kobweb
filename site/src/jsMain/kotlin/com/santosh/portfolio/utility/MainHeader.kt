@@ -67,6 +67,7 @@ fun MainHeader(isDarkMode: Boolean, onThemeToggle: () -> Unit) {
         if (!isMobile.value) {
             Row(
                 modifier = Modifier.gap(20.px)
+                    .zIndex(2f)
             ) {
                 NavLink(ctx, "Home", "/", textColor)
                 NavLink(ctx, "About", "/about", textColor)
