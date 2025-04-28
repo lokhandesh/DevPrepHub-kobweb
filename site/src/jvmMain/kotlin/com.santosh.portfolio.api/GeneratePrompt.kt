@@ -5,7 +5,6 @@ import com.varabyte.kobweb.api.Api
 import com.varabyte.kobweb.api.ApiContext
 import com.varabyte.kobweb.api.http.setBodyText
 import io.ktor.client.HttpClient
-import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.bodyAsText
@@ -31,7 +30,7 @@ suspend fun generatePromptRoute(ctx: ApiContext) {
         return
     }
 
-    val client = HttpClient(OkHttp) {
+    val client = HttpClient() {
         install(ContentNegotiation) {
             json()
         }

@@ -19,7 +19,14 @@ kobweb {
 }
 
 kotlin {
-    configAsKobwebApplication("portfolio")
+   // configAsKobwebApplication("portfolio")
+
+    js(IR) {
+        browser()
+        binaries.executable()
+    }
+
+    jvm()
 
     sourceSets {
         jsMain.dependencies {
@@ -28,8 +35,24 @@ kotlin {
             implementation(libs.kobweb.core)
             implementation(libs.kobweb.silk)
             implementation(libs.silk.icons.fa)
-            // implementation(libs.kobwebx.markdown)
-            
+            implementation("io.ktor:ktor-client-js:2.3.7")
+
+        }
+        jvmMain.dependencies {
+            implementation("io.ktor:ktor-server-core:2.3.7")
+            implementation("io.ktor:ktor-server-netty:2.3.7")
+            implementation("io.ktor:ktor-server-cio:2.3.7") // optional for local testing
+            implementation("io.ktor:ktor-server-content-negotiation:2.3.7")
+            implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.7")
+
+            api("io.ktor:ktor-client-core:2.3.7")
+            api("io.ktor:ktor-client-cio:2.3.7")
+            api("io.ktor:ktor-client-cio-jvm:2.3.7")
+            api("io.ktor:ktor-client-content-negotiation:2.3.7")
+            api("io.ktor:ktor-client-serialization:2.3.7")
+
+            implementation("com.varabyte.kobweb:kobweb-api:0.20.3")
+            implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
         }
     }
 }
