@@ -2,6 +2,7 @@ package com.santosh.portfolio.sections
 
 import androidx.compose.runtime.Composable
 import com.santosh.portfolio.datamodel.Topic
+import com.santosh.portfolio.utility.FloatingActionHandling
 import com.santosh.portfolio.utility.MainLayout
 import com.santosh.portfolio.utility.SectionHeader
 import com.santosh.portfolio.utility.SpanText
@@ -102,6 +103,7 @@ fun KmpQuestionsPage() {
                 }
             }
         }
+        FloatingActionHandling()
     }
 
 }

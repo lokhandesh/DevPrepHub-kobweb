@@ -19,7 +19,7 @@ kobweb {
 }
 
 kotlin {
-   // configAsKobwebApplication("portfolio")
+    configAsKobwebApplication("site", includeServer = true)
 
     js(IR) {
         browser()

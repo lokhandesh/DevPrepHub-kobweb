@@ -6,7 +6,7 @@ server:
     dev:
       contentRoot: "build/processedResources/js/main/public"
       script: "build/kotlin-webpack/js/developmentExecutable/site.js"
-      api: "build/libs/site-jvm-1.0-SNAPSHOT.jar"
+      api: "build/libs/site.jar"
     prod:
       script: "build/kotlin-webpack/js/productionExecutable/site.js"
       siteRoot: ".kobweb/site"

@@ -1,7 +1,12 @@
 package com.santosh.portfolio.sections
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import com.santosh.portfolio.datamodel.Topic
+import com.santosh.portfolio.utility.FloatingActionHandling
 import com.santosh.portfolio.utility.MainLayout
 import com.santosh.portfolio.utility.SectionHeader
 import com.santosh.portfolio.utility.SpanText
@@ -108,6 +113,7 @@ fun AndroidQuestionsPage() {
             }
         }
     }
+        FloatingActionHandling()
         }
 }
 

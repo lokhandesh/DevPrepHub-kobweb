@@ -1,7 +1,13 @@
 package com.santosh.portfolio.sections
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import com.santosh.portfolio.datamodel.Topic
+import com.santosh.portfolio.openaimodule.PromptGeneratorSection
+import com.santosh.portfolio.utility.FloatingActionHandling
 import com.santosh.portfolio.utility.MainLayout
 import com.santosh.portfolio.utility.SectionHeader
 import com.santosh.portfolio.utility.SpanText
@@ -22,17 +28,22 @@ import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.maxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.overflow
 import com.varabyte.kobweb.compose.ui.modifiers.padding
+import com.varabyte.kobweb.compose.ui.styleModifier
 import com.varabyte.kobweb.core.Page
+import com.varabyte.kobweb.silk.components.forms.Button
 import org.jetbrains.compose.web.css.AlignItems
 import org.jetbrains.compose.web.css.FlexWrap
 import org.jetbrains.compose.web.css.JustifyContent
 import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.dom.Div
+import org.jetbrains.compose.web.dom.Img
 import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Text
 
 @Page("/ios-questions")
 @Composable
 fun iOSQuestionsPage() {
+    var showPromptPopup by remember { mutableStateOf(false) }
     MainLayout {
         Box(
             modifier = Modifier
@@ -100,5 +111,6 @@ fun iOSQuestionsPage() {
                 }
             }
         }
+        FloatingActionHandling()
     }
 }
